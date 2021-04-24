@@ -7,13 +7,9 @@ public enum Stanowisko {
 
     public final String nazwaStanowiska;
 
-    private Stanowisko(String nazwaStanowiska) {
+    Stanowisko(String nazwaStanowiska) {
 
         this.nazwaStanowiska = nazwaStanowiska;
-    }
-
-    public String getNazwaStanowiska() {
-        return nazwaStanowiska;
     }
 
     public static Stream<Stanowisko> stream() {

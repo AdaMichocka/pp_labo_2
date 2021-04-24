@@ -1,8 +1,6 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -56,14 +54,14 @@ public class Main {
 
                     break;
                 case 5:
-                    System.out.println("Zadanie 5, uimplementacja metody Iterator():");
+                    System.out.println("Zadanie 5, implementacja metody Iterator():");
                     List<Pracownik> listaPracownikow = new ArrayList<>(firma.spisPracownikow);
                     for (Pracownik p : listaPracownikow) {
                         System.out.println(p);
                     }
                     break;
                 case 6:
-                    System.out.println("Zadanie 6, uimplementacja metody Iterator() dla pracowników o stanowisku s:");
+                    System.out.println("Zadanie 6, implementacja metody Iterator() dla pracowników o stanowisku s:");
                     System.out.println("Wpisz numer: 1 - DYREKTOR, 2 - KIEROWNIK, 3 - PRACOWNIK_SZEREGOWY");
                     int i = scanner.nextInt();
 
@@ -74,7 +72,7 @@ public class Main {
                     }
                     break;
                 case 7:
-                    System.out.println("Zadanie 7, uimplementacja metod:");
+                    System.out.println("Zadanie 7, implementacja metod:");
                     System.out.println("a) metoda obliczająca średnią pensję wszystkich pracowników:");
                     System.out.println(firma.sredniaPensjaWszystkichPracownikow());
                     System.out.println();
