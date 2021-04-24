@@ -1,6 +1,8 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -59,11 +61,27 @@ public class Main {
                     for (Pracownik p : listaPracownikow) {
                         System.out.println(p);
                     }
-
                     break;
                 case 6:
+                    System.out.println("Zadanie 6, uimplementacja metody Iterator() dla pracowników o stanowisku s:");
+                    System.out.println("Wpisz numer: 1 - DYREKTOR, 2 - KIEROWNIK, 3 - PRACOWNIK_SZEREGOWY");
+                    int i = scanner.nextInt();
+
+                    List<Pracownik> pracownicy = firma.wezListeZIteratora(firma.iterator(wezStanowiskoZInta(i)));
+
+                    for (Pracownik pp : pracownicy) {
+                        System.out.println(pp);
+                    }
                     break;
                 case 7:
+                    System.out.println("Zadanie 7, uimplementacja metod:");
+                    System.out.println("a) metoda obliczająca średnią pensję wszystkich pracowników:");
+                    System.out.println(firma.sredniaPensjaWszystkichPracownikow());
+                    System.out.println();
+                    System.out.println("b) metoda obliczjąca średnią pensję pracowników ze wskazanym stanowiskiem:");
+                    System.out.println("Wpisz numer: 1 - DYREKTOR, 2 - KIEROWNIK, 3 - PRACOWNIK_SZEREGOWY");
+                    int x = scanner.nextInt();
+                    System.out.println(firma.sredniaWybranychPracownikow(wezStanowiskoZInta(x)));
                     break;
                 case 0:
                     war = true;
@@ -75,4 +93,24 @@ public class Main {
         scanner.close();
 
     }
+
+
+    public static Stanowisko wezStanowiskoZInta(int i) {
+        Stanowisko s = null;
+        switch (i) {
+            case 1:
+                s = Stanowisko.DYREKTOR;
+                break;
+            case 2:
+                s = Stanowisko.KIEROWNIK;
+                break;
+            case 3:
+                s = Stanowisko.PRACOWNIK_SZEREGOWY;
+                break;
+            default:
+                break;
+        }
+        return s;
+    }
+
 }

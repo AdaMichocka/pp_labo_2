@@ -1,13 +1,21 @@
 public class Pracownik extends Osoba {
 
-    private Stanowisko stanowisko;
-    private double pensja;
+    private final Stanowisko stanowisko;
+    private final double pensja;
 
 
     public Pracownik(String imie, String nazwisko, Stanowisko stanowisko, double pensja) {
         super(imie, nazwisko);
         this.stanowisko = stanowisko;
         this.pensja = pensja;
+    }
+
+    public double getPensja() {
+        return pensja;
+    }
+
+    public Stanowisko getStanowisko() {
+        return stanowisko;
     }
 
     @Override

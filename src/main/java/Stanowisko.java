@@ -1,3 +1,5 @@
+import java.util.stream.Stream;
+
 public enum Stanowisko {
     DYREKTOR("1 - Dyrektor"),
     KIEROWNIK("2 - Kierownik"),
@@ -6,7 +8,15 @@ public enum Stanowisko {
     public final String nazwaStanowiska;
 
     private Stanowisko(String nazwaStanowiska) {
+
         this.nazwaStanowiska = nazwaStanowiska;
     }
 
+    public String getNazwaStanowiska() {
+        return nazwaStanowiska;
+    }
+
+    public static Stream<Stanowisko> stream() {
+        return Stream.of(Stanowisko.values());
+    }
 }

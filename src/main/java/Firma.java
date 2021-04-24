@@ -1,8 +1,9 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class Firma implements Iterable {
+public class Firma implements Iterable<Pracownik> {
 
     List<Pracownik> spisPracownikow = new ArrayList<>();
 
@@ -21,23 +22,58 @@ public class Firma implements Iterable {
 
     @Override
     public Iterator<Pracownik> iterator() {
-        Iterator<Pracownik> it = new Iterator<Pracownik>() {
 
-            private int curentIndex = 0;
-            private Pracownik[] arrayList;
+        return new Iterator<>() {
+
+            private final int curentIndex = 0;
+            private final List<Pracownik> pracownicy = spisPracownikow;
 
             @Override
             public boolean hasNext() {
-                return curentIndex < spisPracownikow.size() && arrayList[curentIndex] != null;
+                return curentIndex < pracownicy.size() && pracownicy.get(curentIndex) != null;
             }
 
             @Override
             public Pracownik next() {
-                return arrayList[curentIndex];
+                return pracownicy.get(curentIndex);
             }
         };
+    }
 
-        return it;
+    public Iterator<Pracownik> iterator(Stanowisko s) {
+
+        final List<Pracownik> pracownicy = spisPracownikow.stream()
+                .filter(a -> a.getStanowisko().equals(s))
+                .collect(Collectors.toList());
+
+        return pracownicy.iterator();
+
+    }
+
+    public List<Pracownik> wezListeZIteratora(Iterator<Pracownik> iterator) {
+        List<Pracownik> list = new ArrayList<>();
+        iterator.forEachRemaining(list::add);
+        return list;
+    }
+
+    public double sredniaPensjaWszystkichPracownikow() {
+        double suma = 0;
+        for (Pracownik p : spisPracownikow) {
+            suma += p.getPensja();
+        }
+        return suma / spisPracownikow.size();
+    }
+
+    public double sredniaWybranychPracownikow(Stanowisko s) {
+        double suma = 0;
+        List<Pracownik> pracownicy = spisPracownikow.stream()
+                .filter(a -> a.getStanowisko().equals(s))
+                .collect(Collectors.toList());
+
+        for (Pracownik p : pracownicy) {
+            suma += p.getPensja();
+        }
+        return suma / pracownicy.size();
     }
 
 
